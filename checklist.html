@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Checklist Digital Safety</title>
+  <link rel="stylesheet" href="stylelist.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <h1>Checklist Digital Safety</h1>
+      <p>Yuk, lengkapi checklist di bawah ini!</p>
+    </div>
+
+    <div class="progress-box">
+      <p>Progress Kamu</p>
+      <div class="progress">
+        <div class="progress-bar" id="mainBar">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORY -->
+  <div class="category">
+    <button class="active">Data Pribadi</button>
+    <button>Aktivitas Online</button>
+    <button>Media Sosial</button>
+    <button>Keamanan</button>
+    <button>Etika</button>
+  </div>
+
+  <!-- CHECKLIST CARD -->
+  <div class="card">
+
+    <div class="card-header">
+      <h2>1. Data Pribadi</h2>
+      <span id="count">0/5 Selesai</span>
+    </div>
+
+    <div class="item">
+      <input type="checkbox" onclick="update()">
+      <div>
+        <b>Tidak membagikan informasi pribadi</b>
+        <p>Nama, alamat, nomor HP, dll</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <input type="checkbox" onclick="update()">
+      <div>
+        <b>Menggunakan password kuat</b>
+        <p>Minimal 8 karakter</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <input type="checkbox" onclick="update()">
+      <div>
+        <b>Tidak kirim foto pribadi</b>
+        <p>Hindari kirim ke orang asing</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <input type="checkbox" onclick="update()">
+      <div>
+        <b>Logout setelah selesai</b>
+        <p>Terutama di perangkat umum</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <input type="checkbox" onclick="update()">
+      <div>
+        <b>Simpan data di tempat aman</b>
+        <p>Gunakan penyimpanan terpercaya</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips">
+    💡 Informasi pribadi itu seperti kunci rumahmu. Jangan dibagikan sembarangan!
+  </div>
+
+</div>
+
+<script>
+function update(){
+  const items = document.querySelectorAll('.item input');
+  const checked = document.querySelectorAll('.item input:checked');
+
+  const percent = Math.round((checked.length / items.length) * 100);
+
+  const bar = document.getElementById('mainBar');
+  bar.style.width = percent + '%';
+  bar.innerText = percent + '%';
+
+  document.getElementById('count').innerText =
+    checked.length + '/' + items.length + ' Selesai';
+}
+</script>
+
+</body>
+</html>

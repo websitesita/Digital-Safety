@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Safety App</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f4f6f9;display:flex}
+
+/* SIDEBAR */
+.sidebar{
+  width:240px;
+  background:#1e3a5f;
+  color:#fff;
+  height:100vh;
+  padding:20px;
+}
+.sidebar h2{font-size:18px}
+.sidebar ul{list-style:none;padding:0}
+.sidebar li{padding:10px;margin:10px 0;background:#2d4f7c;border-radius:8px}
+
+/* MAIN */
+.main{flex:1;padding:20px}
+.card{background:#fff;padding:20px;border-radius:12px;margin-bottom:20px;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+
+.progress{background:#ddd;border-radius:20px;overflow:hidden}
+.progress-bar{height:20px;background:#4caf50;width:70%}
+
+.badge{display:inline-block;padding:5px 10px;border-radius:10px;background:#eee;margin-top:5px}
+button{padding:10px;border:none;border-radius:8px;background:#4a90e2;color:#fff;width:100%}
+input{width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #ccc}
+
+/* MOBILE NAV */
+.menu-toggle{
+  display:none;
+  background:#1e3a5f;
+  color:white;
+  padding:12px;
+  text-align:center;
+  cursor:pointer;
+}
+
+/* OVERLAY */
+.overlay{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.3);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.3s ease;
+  z-index:900;
+}
+.overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px){
+  body{flex-direction:column}
+
+  .menu-toggle{display:block}
+
+  .sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    transform:translateX(-100%);
+    height:100%;
+    z-index:1000;
+    transition:transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change:transform;
+  }
+
+  .sidebar.active{
+    transform:translateX(0);
+  }
+
+  .main{padding:15px}
+
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<div class="sidebar" id="sidebar">
+  <h2>🔐 Digital Safety</h2>
+  <ul>
+    <li>Progress Saya</li>
+    <li>Tips & Edukasi</li>
+    <li>Pencapaian</li>
+    <li>Pengaturan</li>
+  </ul>
+</div>
+
+<div class="main">
+
+<div class="card">
+  <h2>Progress Saya</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Skor</h3>
+      <p>78%</p>
+      <div class="progress"><div class="progress-bar"></div></div>
+    </div>
+    <div class="card">
+      <h3>Checklist Selesai</h3>
+      <p>18 item</p>
+    </div>
+    <div class="card">
+      <h3>Streak</h3>
+      <p>5 hari</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Tips & Edukasi</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Password Kuat</h3>
+      <p>Gunakan kombinasi huruf, angka, simbol</p>
+      <span class="badge">Keamanan</span>
+    </div>
+    <div class="card">
+      <h3>Jangan Oversharing</h3>
+      <p>Hindari membagikan data pribadi</p>
+      <span class="badge">Privasi</span>
+    </div>
+    <div class="card">
+      <h3>Waspada Link</h3>
+      <p>Jangan klik link mencurigakan</p>
+      <span class="badge">Online</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Pencapaian</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Pemula Aman</h3>
+      <p>Selesaikan 5 checklist</p>
+      <a href="checklist.html"><button>Mulai</button></a>
+    </div>
+    <div class="card">
+      <h3>Pintar Digital</h3>
+      <p>Selesaikan 10 checklist</p>
+      <a href="checklist2.html"><button>Mulai</button></a>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Pengaturan Akun</h2>
+  <label>Nama</label>
+  <input type="text" value="Andi">
+  <label>Email</label>
+  <input type="text" value="andi@email.com">
+  <a href="settings.html"><button>Login</button></a>
+</div>
+
+</div>
+
+<script>
+function toggleMenu(){
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  sidebar.classList.toggle('active');
+  overlay.classList.toggle('active');
+
+  // lock scroll when open
+  if(sidebar.classList.contains('active')){
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'auto';
+  }
+}
+
+function closeMenu(){
+  document.getElementById('sidebar').classList.remove('active');
+  document.getElementById('overlay').classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+</script>
+
+</body>
+</html>

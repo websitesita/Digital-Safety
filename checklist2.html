@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pintar Digital</title>
+  <link rel="stylesheet" href="stylelist2.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <h1>🏆 Pintar Digital</h1>
+      <p>Tingkat lanjut: jadi siswa yang cerdas & bijak di dunia digital</p>
+    </div>
+
+    <div class="progress-box">
+      <p>Progress</p>
+      <div class="progress">
+        <div class="progress-bar" id="bar">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD -->
+  <div class="card">
+
+    <div class="card-header">
+      <h2>Checklist Pintar Digital</h2>
+      <span id="status">0/10 selesai</span>
+    </div>
+
+    <!-- 10 CHECKLIST -->
+    <div class="item"><input type="checkbox" onclick="update()">
+      <div><b>Aktifkan verifikasi 2 langkah</b><p>Melindungi akun dari peretasan</p></div>
+    </div>
+
+    <div class="item"><input type="checkbox" onclick="update()">
+      <div><b>Menggunakan password berbeda</b><p>Setiap akun punya password unik</p></div>
+    </div>
+
+    <div class="item"><input type="checkbox" onclick="update()">
+      <div><b>Memeriksa fakta sebelum share</b><p>Hindari menyebarkan hoaks</p></div>
+    </div>
+
+    <div class="item"><input type="checkbox" onclick="update()">
+      <div><b>Tidak mudah percaya informasi viral</b><p>Selalu cek sumber terpercaya</p></div>
+    </div>
+
+    <div class="item"><input type="checkbox" onclick="update()">
+      <div><b>Mengatur privasi akun media sosial</b><p>Kontrol siapa yang bisa melihat</p></div>
+    </div>
+
+    <div class="item"><input type="checkbox" onclick="update()">
+      <div><b>Tidak mengunduh file sembarangan</b><p>Hindari malware & virus</p></div>
+    </div>
+
+    <div class="item"><input type="checkbox" onclick="update()">
+      <div><b>Memperbarui aplikasi secara rutin</b><p>Untuk keamanan sistem</p></div>
+    </div>
+
+    <div class="item"><input type="checkbox" onclick="update()">
+      <div><b>Menghindari cyberbullying</b><p>Bersikap sopan di internet</p></div>
+    </div>
+
+    <div class="item"><input type="checkbox" onclick="update()">
+      <div><b>Mengenali tanda penipuan online</b><p>Waspada phishing & scam</p></div>
+    </div>
+
+    <div class="item"><input type="checkbox" onclick="update()">
+      <div><b>Menggunakan WiFi yang aman</b><p>Hindari WiFi publik tanpa perlindungan</p></div>
+    </div>
+
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips">
+    💡 Orang pintar digital bukan yang paling sering online, tapi yang paling bijak dan aman saat online.
+  </div>
+
+</div>
+
+<script>
+function update(){
+  const items = document.querySelectorAll('.item input');
+  const checked = document.querySelectorAll('.item input:checked');
+
+  const percent = Math.round((checked.length / items.length) * 100);
+
+  const bar = document.getElementById('bar');
+  bar.style.width = percent + '%';
+  bar.innerText = percent + '%';
+
+  document.getElementById('status').innerText =
+    checked.length + '/10 selesai';
+}
+</script>
+
+</body>
+</html>
